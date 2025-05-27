@@ -1,7 +1,6 @@
 package com.adrLuceros.transporte.Tienda.application.DTO;
 
 import java.time.LocalTime;
-import java.util.List;
 
 import com.adrLuceros.transporte.Empresa.Application.DTO.EmpresaDTO;
 
@@ -23,6 +22,6 @@ public class TiendaEmpresaDTO {
     private String direccion;
     private String observacion;
     private String sn;
-    private List<EmpresaDTO> empresa; 
+    private EmpresaDTO empresa; 
     
 }

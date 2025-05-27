@@ -36,11 +36,11 @@ public class TiendaService {
     
     for (Tienda tienda : tiendas) {
         TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
-        List<EmpresaDTO> empresas = new ArrayList<>();
+  
         EmpresaDTO empresa = empresaService.findById(tiendaDTO.getIdEmpresa());
-        empresas.add(empresa);
+
         
-        tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresas, tiendaDTO));
+        tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresa, tiendaDTO));
     }
     
     return tiendaEmpresaList;
@@ -49,11 +49,11 @@ public class TiendaService {
     public TiendaEmpresaDTO findTiendaById(int idTienda) {
         TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tiendaRepository.findTiendaById(idTienda));
     
-        List<EmpresaDTO> empresas = new ArrayList<>();
+        
         EmpresaDTO empresa = empresaService.findById(tiendaDTO.getIdEmpresa());
-         empresas.add(empresa);
+         
 
-         return mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresas, tiendaDTO);
+         return mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresa, tiendaDTO);
     }
 
     

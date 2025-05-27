@@ -1,8 +1,6 @@
 package com.adrLuceros.transporte.Tienda.application.Mapper;
 
 
-import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +22,7 @@ public class MapperRelacionTiendaEmpresa {
                 .setSkipNullEnabled(true);
     }
 
-    public TiendaEmpresaDTO mapToTiendaEmpresaDTOList(List<EmpresaDTO> empresas,TiendaDTO tiendaDTO) {
+    public TiendaEmpresaDTO mapToTiendaEmpresaDTOList(EmpresaDTO empresa,TiendaDTO tiendaDTO) {
       
         TiendaEmpresaDTO tiendaEmpresaDTO = new TiendaEmpresaDTO();
         tiendaEmpresaDTO.setIdTienda(tiendaDTO.getIdTienda());
@@ -35,7 +33,7 @@ public class MapperRelacionTiendaEmpresa {
         tiendaEmpresaDTO.setDireccion(tiendaDTO.getDireccion());
         tiendaEmpresaDTO.setObservacion(tiendaDTO.getObservacion());
         tiendaEmpresaDTO.setSn(tiendaDTO.getSn());
-        tiendaEmpresaDTO.setEmpresa(empresas);
+        tiendaEmpresaDTO.setEmpresa(empresa);
         
         return tiendaEmpresaDTO;
 
