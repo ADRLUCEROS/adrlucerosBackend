@@ -33,18 +33,19 @@ CREATE TABLE tienda (
     FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
 );
 
-INSERT INTO tienda (nombre, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn,id_empresa)
+INSERT INTO tienda (nombre, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn, id_empresa)
 VALUES
-('Tienda Centro', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central', 'A1',1),
-('Tienda Norte', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL, 'B2',2),
-('MiniMarket Sur', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos', 'C3',3),
-('Express Oriente', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local', 'D4',4),
-('SuperTienda Oeste', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL, 'E5',5),
-('Tienda Plaza', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia', 'F6',1),
-('Market Urbano', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano', 'G7',2),
-('Comercial Andina', '08:15:00', '20:45:00', 7, 'Av. Andina 333', NULL, 'H8',5),
-('Mercado Central', '06:00:00', '18:00:00', 8, 'Calle Comercio 999', 'Zona de abastos', 'I9',6),
-('Tienda Express', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local', 'J0',1);
+('Tienda Centro', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central', 's', 1),
+('Tienda Norte', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL, 's', 2),
+('MiniMarket Sur', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos', 's', 3),
+('Express Oriente', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local', 's', 4),
+('SuperTienda Oeste', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL, 's', 5),
+('Tienda Plaza', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia', 's', 1),
+('Market Urbano', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano', 's', 2),
+('Comercial Andina', '08:15:00', '20:45:00', 7, 'Av. Andina 333', NULL, 's', 5),
+('Mercado Central', '06:00:00', '18:00:00', 8, 'Calle Comercio 999', 'Zona de abastos', 's', 6),
+('Tienda Express', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local', 's', 1);
+
 
 
 
