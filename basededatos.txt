@@ -1,0 +1,23 @@
+CREATE TABLE tienda (
+    id_tienda INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    horario_inicio TIME NOT NULL,
+    horario_fin TIME NOT NULL,
+    id_tienda_ubi INT NOT NULL,
+    direccion VARCHAR(255),
+    observacion TEXT,
+    sn VARCHAR(50)
+);
+
+INSERT INTO tienda (nombre, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn)
+VALUES
+('Tienda Centro', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central', 'A1'),
+('Tienda Norte', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL, 'B2'),
+('MiniMarket Sur', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos', 'C3'),
+('Express Oriente', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local', 'D4'),
+('SuperTienda Oeste', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL, 'E5'),
+('Tienda Plaza', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia', 'F6'),
+('Market Urbano', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano', 'G7'),
+('Comercial Andina', '08:15:00', '20:45:00', 7, 'Av. Andina 333', NULL, 'H8'),
+('Mercado Central', '06:00:00', '18:00:00', 8, 'Calle Comercio 999', 'Zona de abastos', 'I9'),
+('Tienda Express', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local', 'J0');

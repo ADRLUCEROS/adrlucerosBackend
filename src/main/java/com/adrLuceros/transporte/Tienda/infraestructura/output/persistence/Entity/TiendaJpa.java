@@ -1,0 +1,48 @@
+package com.adrLuceros.transporte.Tienda.infraestructura.output.persistence.Entity;
+
+import java.time.LocalTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "tienda")
+
+public class TiendaJpa {
+
+    @Column(name = "id_tienda")
+    @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    private int idTienda;
+    @Column(name = "nombre")
+    private String nombreTienda;
+
+    @Column(name = "horario_inicio")
+    private LocalTime horarioInicio;
+
+    @Column(name = "horario_fin")
+    private LocalTime horarioFin;
+
+    @Column(name = "id_tienda_ubi")
+    private int idTiendaUbi;
+
+    @Column(name = "direccion")
+    private String direccion;
+
+    @Column(name = "observacion")
+    private String observacion;
+
+    @Column(name = "sn")
+    private String sn;
+
+    
+}
