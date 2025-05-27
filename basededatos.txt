@@ -43,3 +43,39 @@ VALUES
 ('Grupo Alvi S.A.C.', '20321098765');
 
 
+
+CREATE TABLE unidad (
+    id_unidad INT AUTO_INCREMENT PRIMARY KEY,
+    placa VARCHAR(10) NOT NULL UNIQUE,
+    año_fab INT NOT NULL,
+    altura DOUBLE NOT NULL,
+    ancho DOUBLE NOT NULL,
+    longitud DOUBLE NOT NULL,
+    peso_neto DOUBLE NOT NULL,
+    peso_util DOUBLE NOT NULL,
+    peso_bruto DOUBLE NOT NULL,
+    metro_cubico DOUBLE NOT NULL,
+    cod_tarj_circu VARCHAR(20),
+    estado VARCHAR(20) NOT NULL,
+    id_tienda INT NOT NULL,
+    FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
+);
+
+INSERT INTO unidad (
+    placa, año_fab, altura, ancho, longitud,
+    peso_neto, peso_util, peso_bruto, metro_cubico,
+    cod_tarj_circu, estado, id_tienda
+) VALUES
+('ABC123', 2018, 2.5, 2.4, 6.0, 3500, 1500, 5000, 36.0, 'TARJ-001', 'activo', 1),
+('XYZ789', 2020, 2.6, 2.5, 7.2, 3800, 1700, 5500, 45.0, 'TARJ-002', 'activo', 2),
+('LMN456', 2017, 2.4, 2.3, 6.5, 3400, 1600, 5000, 39.0, 'TARJ-003', 'activo', 3),
+('JHK321', 2019, 2.7, 2.6, 7.0, 3900, 1800, 5700, 45.8, 'TARJ-004', 'activo', 4),
+('POI987', 2021, 2.8, 2.5, 7.5, 4000, 1900, 5900, 47.5, 'TARJ-005', 'activo', 1),
+('QWE654', 2016, 2.3, 2.2, 6.2, 3300, 1400, 4700, 36.3, 'TARJ-006', 'mantenimiento', 2),
+('RTY321', 2015, 2.2, 2.1, 6.0, 3100, 1300, 4400, 33.0, 'TARJ-007', 'baja', 3),
+('UOP567', 2022, 2.9, 2.6, 8.0, 4100, 2000, 6100, 50.1, 'TARJ-008', 'activo', 4),
+('ZXC432', 2023, 3.0, 2.7, 8.5, 4200, 2100, 6300, 53.5, 'TARJ-009', 'activo', 1),
+('BNM678', 2014, 2.1, 2.0, 5.8, 2900, 1200, 4100, 30.2, 'TARJ-010', 'baja', 2);
+
+
+
