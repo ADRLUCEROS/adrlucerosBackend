@@ -1,28 +1,3 @@
-CREATE TABLE tienda (
-    id_tienda INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    horario_inicio TIME NOT NULL,
-    horario_fin TIME NOT NULL,
-    id_tienda_ubi INT NOT NULL,
-    direccion VARCHAR(255),
-    observacion TEXT,
-    sn VARCHAR(50)
-);
-
-INSERT INTO tienda (nombre, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn)
-VALUES
-('Tienda Centro', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central', 'A1'),
-('Tienda Norte', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL, 'B2'),
-('MiniMarket Sur', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos', 'C3'),
-('Express Oriente', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local', 'D4'),
-('SuperTienda Oeste', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL, 'E5'),
-('Tienda Plaza', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia', 'F6'),
-('Market Urbano', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano', 'G7'),
-('Comercial Andina', '08:15:00', '20:45:00', 7, 'Av. Andina 333', NULL, 'H8'),
-('Mercado Central', '06:00:00', '18:00:00', 8, 'Calle Comercio 999', 'Zona de abastos', 'I9'),
-('Tienda Express', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local', 'J0');
-
-
 CREATE TABLE empresa (
     id_empresa INT AUTO_INCREMENT PRIMARY KEY,
     razon_social VARCHAR(150) NOT NULL,
@@ -41,6 +16,36 @@ VALUES
 ('Alimentos Selectos del Norte S.A.', '20543210987'),
 ('Mercados del Sur E.I.R.L.', '20432109876'),
 ('Grupo Alvi S.A.C.', '20321098765');
+
+
+
+
+CREATE TABLE tienda (
+    id_tienda INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    horario_inicio TIME NOT NULL,
+    horario_fin TIME NOT NULL,
+    id_tienda_ubi INT NOT NULL,
+    direccion VARCHAR(255),
+    observacion TEXT,
+    sn VARCHAR(50),
+    id_empresa INT NOT NULL,
+    FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
+);
+
+INSERT INTO tienda (nombre, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn,id_empresa)
+VALUES
+('Tienda Centro', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central', 'A1',1),
+('Tienda Norte', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL, 'B2',2),
+('MiniMarket Sur', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos', 'C3',3),
+('Express Oriente', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local', 'D4',4),
+('SuperTienda Oeste', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL, 'E5',5),
+('Tienda Plaza', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia', 'F6',1),
+('Market Urbano', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano', 'G7',2),
+('Comercial Andina', '08:15:00', '20:45:00', 7, 'Av. Andina 333', NULL, 'H8',5),
+('Mercado Central', '06:00:00', '18:00:00', 8, 'Calle Comercio 999', 'Zona de abastos', 'I9',6),
+('Tienda Express', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local', 'J0',1);
+
 
 
 
@@ -76,6 +81,3 @@ INSERT INTO unidad (
 ('UOP567', 2022, 2.9, 2.6, 8.0, 4100, 2000, 6100, 50.1, 'TARJ-008', 'activo', 4),
 ('ZXC432', 2023, 3.0, 2.7, 8.5, 4200, 2100, 6300, 53.5, 'TARJ-009', 'activo', 1),
 ('BNM678', 2014, 2.1, 2.0, 5.8, 2900, 1200, 4100, 30.2, 'TARJ-010', 'baja', 2);
-
-
-

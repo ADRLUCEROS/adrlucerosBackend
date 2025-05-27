@@ -21,5 +21,6 @@ public class TiendaDTO {
     private String direccion;
     private String observacion;
     private String sn;
+    private int idEmpresa;
     
 }

@@ -28,8 +28,10 @@ public class TiendaRepositoryInfra implements TiendaRepository  {
 
     @Override
     public Tienda findTiendaById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findTiendaById'");
+        Tienda tienda = mysqlTiendaRepository.findById(id)
+                .map(mapperJpaToModels::JpaToModels)
+                .orElse(null);
+        return tienda;
     }
 
     @Override

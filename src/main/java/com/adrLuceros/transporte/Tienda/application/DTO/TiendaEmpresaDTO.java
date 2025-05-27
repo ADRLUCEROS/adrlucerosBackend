@@ -1,7 +1,9 @@
-package com.adrLuceros.transporte.Tienda.domain.models;
-
+package com.adrLuceros.transporte.Tienda.application.DTO;
 
 import java.time.LocalTime;
+import java.util.List;
+
+import com.adrLuceros.transporte.Empresa.Application.DTO.EmpresaDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,9 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Tienda {
+public class TiendaEmpresaDTO {
 
-    private int idTienda;
+        private int idTienda;
     private String nombreTienda;
     private LocalTime horarioInicio;
     private LocalTime horarioFin;
@@ -21,7 +23,6 @@ public class Tienda {
     private String direccion;
     private String observacion;
     private String sn;
-    private int idEmpresa;
-
+    private List<EmpresaDTO> empresa; 
     
 }

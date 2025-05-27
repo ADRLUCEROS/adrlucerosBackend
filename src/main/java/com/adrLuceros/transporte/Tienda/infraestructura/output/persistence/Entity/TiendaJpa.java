@@ -44,5 +44,8 @@ public class TiendaJpa {
     @Column(name = "sn")
     private String sn;
 
+    @Column(name = "id_empresa")
+    private int idEmpresa;
+
     
 }
