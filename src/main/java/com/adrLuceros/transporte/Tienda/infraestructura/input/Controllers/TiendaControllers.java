@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adrLuceros.transporte.Tienda.application.DTO.TiendaDTO;
+
 import com.adrLuceros.transporte.Tienda.application.DTO.TiendaEmpresaDTO;
 import com.adrLuceros.transporte.Tienda.application.service.TiendaService;
 
