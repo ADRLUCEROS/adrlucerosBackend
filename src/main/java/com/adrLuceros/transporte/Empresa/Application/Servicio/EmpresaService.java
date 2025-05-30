@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.adrLuceros.transporte.Empresa.Application.DTO.EmpresaDTO;
 import com.adrLuceros.transporte.Empresa.Application.Mapper.MapperEmpresaApp;
+import com.adrLuceros.transporte.Empresa.Domain.Models.Empresa;
 import com.adrLuceros.transporte.Empresa.Domain.Repository.EmpresaRepository;
 
 @Service
@@ -27,6 +28,23 @@ public class EmpresaService {
         return empresaRepository.findAll().stream()
                 .map(mapperEmpresaApp::modelToDTO)
                 .toList();
+    }
+    public void save(EmpresaDTO empresaDTO) {
+        empresaRepository.save(mapperEmpresaApp.dtoToModel(empresaDTO));
+    }
+
+    public void update(EmpresaDTO empresaDTO) {
+
+        Empresa empresa = empresaRepository.findById(empresaDTO.getIdEmpresa());
+
+        mapperEmpresaApp.updateMapper(empresaDTO, empresa);
+        empresaRepository.update(empresa);
+
+    }
+    public void delete(EmpresaDTO empresaDTO) {
+        Empresa empresa = empresaRepository.findById(empresaDTO.getIdEmpresa());
+         mapperEmpresaApp.updateMapper(empresaDTO, empresa);
+        empresaRepository.update(empresa);
     }
     
 }

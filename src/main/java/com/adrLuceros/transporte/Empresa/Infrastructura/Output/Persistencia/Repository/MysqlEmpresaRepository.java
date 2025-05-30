@@ -40,20 +40,22 @@ public class MysqlEmpresaRepository implements EmpresaRepository {
 
     @Override
     public void save(Empresa empresa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        EmpresaJpa empresajpa = mapperEmpresainfra.ModelsToJpa(empresa);
+        jpaEmpresaRepository.save(empresajpa);
     }
 
     @Override
     public void update(Empresa empresa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        EmpresaJpa empresajpa = mapperEmpresainfra.ModelsToJpa(empresa);
+        jpaEmpresaRepository.save(empresajpa);
     }
 
     @Override
     public void delete(Empresa empresa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+
+        EmpresaJpa empresajpa = mapperEmpresainfra.ModelsToJpa(empresa);
+        jpaEmpresaRepository.save(empresajpa);
+
     }
     
 }
