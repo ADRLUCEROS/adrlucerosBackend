@@ -6,24 +6,28 @@ import org.springframework.stereotype.Repository;
 
 import com.adrLuceros.transporte.Tienda.domain.models.Tienda;
 import com.adrLuceros.transporte.Tienda.domain.repository.TiendaRepository;
+import com.adrLuceros.transporte.Tienda.infraestructura.output.persistence.Entity.TiendaJpa;
 import com.adrLuceros.transporte.Tienda.infraestructura.output.persistence.Mapper.TiendaMapperJpaToModel;
 
 @Repository
 
-public class TiendaRepositoryInfra implements TiendaRepository  {
+public class TiendaRepositoryInfra implements TiendaRepository {
 
-        private final MysqlTiendaRepository mysqlTiendaRepository;
-        private final TiendaMapperJpaToModel mapperJpaToModels;
+    private final MysqlTiendaRepository mysqlTiendaRepository;
+    private final TiendaMapperJpaToModel mapperJpaToModels;
 
-            public TiendaRepositoryInfra(MysqlTiendaRepository mysqlTiendaRepository, TiendaMapperJpaToModel mapperJpaToModels) {
+    public TiendaRepositoryInfra(MysqlTiendaRepository mysqlTiendaRepository,
+            TiendaMapperJpaToModel mapperJpaToModels) {
         this.mysqlTiendaRepository = mysqlTiendaRepository;
         this.mapperJpaToModels = mapperJpaToModels;
     }
 
     @Override
     public void saveTienda(Tienda tienda) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveTienda'");
+
+        TiendaJpa tiendaJpa = mapperJpaToModels.ModelsToJpa(tienda);
+        mysqlTiendaRepository.save(tiendaJpa);
+
     }
 
     @Override
@@ -40,20 +44,19 @@ public class TiendaRepositoryInfra implements TiendaRepository  {
                 .map(mapperJpaToModels::JpaToModels)
                 .toList();
         return tiendas;
-        
 
     }
 
     @Override
     public void updateTienda(Tienda tienda) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateTienda'");
+        TiendaJpa tiendaJpa = mapperJpaToModels.ModelsToJpa(tienda);
+        mysqlTiendaRepository.save(tiendaJpa);
     }
 
     @Override
     public void deleteTienda(Tienda tienda) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteTienda'");
+        TiendaJpa tiendaJpa = mapperJpaToModels.ModelsToJpa(tienda);
+        mysqlTiendaRepository.save(tiendaJpa);
     }
-    
+
 }
