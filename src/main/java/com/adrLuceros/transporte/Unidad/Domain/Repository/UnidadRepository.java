@@ -8,5 +8,8 @@ public interface UnidadRepository {
 
     List<Unidad> findAll();
     Unidad findById(int idUnidad);
+    void save(Unidad unidad);
+    void delete(Unidad unidad);
+    void update(Unidad unidad);
     
 }

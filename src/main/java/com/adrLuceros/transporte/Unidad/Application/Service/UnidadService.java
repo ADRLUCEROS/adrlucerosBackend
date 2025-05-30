@@ -33,6 +33,10 @@ public class UnidadService  {
         return null;
     }
 
+    public void save(UnidadDTO unidadDTO) {
+        Unidad unidad = mapperUnidadApp.dtoToModel(unidadDTO);
+        unidadRepository.save(unidad);
+    }
 
     
 }

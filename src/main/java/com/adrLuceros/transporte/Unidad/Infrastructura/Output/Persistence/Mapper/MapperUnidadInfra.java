@@ -20,11 +20,11 @@ public class MapperUnidadInfra {
                 .setSkipNullEnabled(true);
     }
 
-    public Unidad modelToDTO(UnidadJpa unidadJpa) {
+    public Unidad JpatoModel(UnidadJpa unidadJpa) {
         Unidad unidad = modelMapper.map(unidadJpa, Unidad.class);
         return unidad;
     }
-    public UnidadJpa dtoToModel(Unidad unidad) {
+    public UnidadJpa ModelToJpa(Unidad unidad) {
         UnidadJpa unidadJpa = modelMapper.map(unidad, UnidadJpa.class);
         return unidadJpa;
     }
