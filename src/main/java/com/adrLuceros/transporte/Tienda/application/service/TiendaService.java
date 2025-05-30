@@ -56,5 +56,26 @@ public class TiendaService {
          return mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresa, tiendaDTO);
     }
 
+    public void saveTienda(TiendaDTO tiendaDTO) {
+        Tienda tienda = mapperTiendaModeltoDTO.dtoToModel(tiendaDTO);
+         tiendaRepository.saveTienda(tienda);
+        
+    }
+    public void updateTienda(TiendaDTO tiendaDTO) {
+        Tienda tienda = mapperTiendaModeltoDTO.dtoToModel(tiendaDTO);
+        
+        mapperTiendaModeltoDTO.updateMapper(tiendaDTO, tienda);
+        tiendaRepository.updateTienda(tienda);
+
+    }   
+    
+        public void deleteTienda(TiendaDTO tiendaDTO) {
+        Tienda tienda = mapperTiendaModeltoDTO.dtoToModel(tiendaDTO);
+        
+        mapperTiendaModeltoDTO.updateMapper(tiendaDTO, tienda);
+        tiendaRepository.updateTienda(tienda);
+
+    }   
+
     
 }
