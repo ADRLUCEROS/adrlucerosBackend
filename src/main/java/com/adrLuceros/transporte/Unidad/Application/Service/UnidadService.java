@@ -38,5 +38,20 @@ public class UnidadService  {
         unidadRepository.save(unidad);
     }
 
+        public void delete(UnidadDTO unidadDTO) {
+        Unidad unidadExistente = unidadRepository.findById(unidadDTO.getIdUnidad());
+
+         mapperUnidadApp.updateMapper(unidadDTO, unidadExistente);
+        unidadRepository.update(unidadExistente);
+    }
+
+        public void update(UnidadDTO unidadDTO) {
+        
+        Unidad unidadExistente = unidadRepository.findById(unidadDTO.getIdUnidad());
+
+         mapperUnidadApp.updateMapper(unidadDTO, unidadExistente);
+        unidadRepository.update(unidadExistente);
+    }
+
     
 }
