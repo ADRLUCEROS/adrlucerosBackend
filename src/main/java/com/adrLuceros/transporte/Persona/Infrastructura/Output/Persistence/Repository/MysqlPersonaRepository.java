@@ -2,14 +2,15 @@ package com.adrLuceros.transporte.Persona.Infrastructura.Output.Persistence.Repo
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
+
 
 import com.adrLuceros.transporte.Persona.Domain.Modal.Persona;
 import com.adrLuceros.transporte.Persona.Domain.Repository.PersonaRepository;
 import com.adrLuceros.transporte.Persona.Infrastructura.Output.Persistence.Entity.PersonaJpa;
 import com.adrLuceros.transporte.Persona.Infrastructura.Output.Persistence.Mappers.PersonaMapperJpaToModel;
 
-@Service
+@Repository
 
 public class MysqlPersonaRepository implements PersonaRepository  {
 
