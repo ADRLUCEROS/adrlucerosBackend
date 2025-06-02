@@ -1,11 +1,15 @@
 package com.adrLuceros.transporte.ClienteCorporativo.Application.Mapper;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.CCAndEmpresa;
 import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.ClienteCorporativoDTO;
 import com.adrLuceros.transporte.ClienteCorporativo.Domain.Models.ClienteCorporativo;
 import com.adrLuceros.transporte.Empresa.Application.DTO.EmpresaDTO;
+
+
+@Component
 
 public class CCMapperModelsAndDTO {
 

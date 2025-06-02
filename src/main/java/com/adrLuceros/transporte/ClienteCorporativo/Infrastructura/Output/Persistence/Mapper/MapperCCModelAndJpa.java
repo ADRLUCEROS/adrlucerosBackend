@@ -1,9 +1,12 @@
 package com.adrLuceros.transporte.ClienteCorporativo.Infrastructura.Output.Persistence.Mapper;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.adrLuceros.transporte.ClienteCorporativo.Domain.Models.ClienteCorporativo;
 import com.adrLuceros.transporte.ClienteCorporativo.Infrastructura.Output.Persistence.Entity.ClienteCorporativoJpa;
+
+@Component
 
 public class MapperCCModelAndJpa {
 
