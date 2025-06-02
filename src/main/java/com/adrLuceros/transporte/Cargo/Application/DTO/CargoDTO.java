@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CargoDTO {
 
-        private int idCargo;
+    private int idCargo;
     private String nombre_cargo;
     private String descripcion;
     

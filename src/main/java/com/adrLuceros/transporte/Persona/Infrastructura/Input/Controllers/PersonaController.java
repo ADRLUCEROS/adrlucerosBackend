@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.adrLuceros.transporte.Persona.Application.DTO.CargoPersonaDTO;
 import com.adrLuceros.transporte.Persona.Application.DTO.PersonaDTO;
 import com.adrLuceros.transporte.Persona.Application.Service.PersonaService;
 
@@ -26,18 +27,18 @@ public class PersonaController {
     }
 
     @GetMapping("/{idPersona}") 
-    public ResponseEntity<PersonaDTO> findbyIdPersona(@PathVariable int idPersona) {
-        PersonaDTO personaDTO = personaService.findbyIdPersona(idPersona);
-        if (personaDTO == null) {
+    public ResponseEntity<CargoPersonaDTO> findbyIdPersona(@PathVariable int idPersona) {
+        CargoPersonaDTO cargoPersonaDTO = personaService.findbyIdPersona(idPersona);
+        if (cargoPersonaDTO == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(personaDTO);
+        return ResponseEntity.ok(cargoPersonaDTO);
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonaDTO>> findAllPersonas() {
-        List<PersonaDTO> personas = personaService.findAllPersonas();
-        return ResponseEntity.ok(personas);
+    public ResponseEntity<List<CargoPersonaDTO>> findAllPersonas() {
+        List<CargoPersonaDTO> Cargopersonas = personaService.findAllPersonasWithCargo();
+        return ResponseEntity.ok(Cargopersonas);
     }
 
     @PostMapping
