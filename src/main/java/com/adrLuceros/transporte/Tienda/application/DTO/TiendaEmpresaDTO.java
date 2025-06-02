@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 public class TiendaEmpresaDTO {
 
-        private int idTienda;
+    private int idTienda;
     private String nombreTienda;
     private LocalTime horarioInicio;
     private LocalTime horarioFin;
