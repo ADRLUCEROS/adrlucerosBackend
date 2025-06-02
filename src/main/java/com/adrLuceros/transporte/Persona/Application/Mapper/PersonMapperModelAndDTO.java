@@ -1,10 +1,14 @@
 package com.adrLuceros.transporte.Persona.Application.Mapper;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
+
 import com.adrLuceros.transporte.Persona.Domain.Modal.Persona;
 import com.adrLuceros.transporte.Cargo.Application.DTO.CargoDTO;
 import com.adrLuceros.transporte.Persona.Application.DTO.CargoPersonaDTO;
 import com.adrLuceros.transporte.Persona.Application.DTO.PersonaDTO;
+
+@Component
 
 public class PersonMapperModelAndDTO {
 

@@ -44,5 +44,7 @@ public class UnidadDTO {
 
     private String estado;
 
+    private int idTienda;
+
     
 }

@@ -27,7 +27,7 @@ public class CCMapperModelsAndDTO {
     public CCAndEmpresa ModelsToDTO(ClienteCorporativo clienteCorporativo, EmpresaDTO empresaDTO) {
 
         CCAndEmpresa ccAndEmpresa = modelMapper.map(clienteCorporativo, CCAndEmpresa.class);
-        ccAndEmpresa.setEmpresaId(empresaDTO);
+        ccAndEmpresa.setEmpresa(empresaDTO);
         return ccAndEmpresa;
 
     }

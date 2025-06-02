@@ -22,7 +22,7 @@ public class CCAndEmpresa {
 
     private String direccionFiscal;
 
-    private EmpresaDTO empresaId;
+    private EmpresaDTO empresa;
 
     
 }

@@ -32,7 +32,7 @@ public class PersonaJpa {
     private String apellidos;
     @Column(name = "num_doc")   
     private int numDoc;
-    @Column(name = "num_doc")
+    @Column(name = "num_contacto")
     private int numContacto;
     @Column(name = "num_wpp")
     private int numWpp;

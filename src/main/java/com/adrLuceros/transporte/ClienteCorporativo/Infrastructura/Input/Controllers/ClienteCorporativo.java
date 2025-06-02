@@ -27,7 +27,7 @@ public class ClienteCorporativo {
         this.clienteCorporativoService = clienteCorporativoService;
     }
 
-    @GetMapping
+    @GetMapping("/{idClienteCorporativo}")
     public ResponseEntity<CCAndEmpresa> findById(@PathVariable int idClienteCorporativo) {
         CCAndEmpresa ccAndEmpresa = clienteCorporativoService.findById(idClienteCorporativo);
         if (ccAndEmpresa != null) {
@@ -36,7 +36,7 @@ public class ClienteCorporativo {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<CCAndEmpresa>> findAll() {
         List<CCAndEmpresa> ccAndEmpresas = clienteCorporativoService.findAll();
         return ResponseEntity.ok(ccAndEmpresas);
