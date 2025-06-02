@@ -1,84 +1,259 @@
-CREATE TABLE empresa (
-    id_empresa INT AUTO_INCREMENT PRIMARY KEY,
-    razon_social VARCHAR(150) NOT NULL,
-    ruc VARCHAR(11) NOT NULL UNIQUE
+CREATE TABLE producto (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(255),
+    precio DECIMAL(10, 2),
+    disponible BOOLEAN,
+    id_restaurante INT,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    id_producto INT
 );
 
-INSERT INTO empresa (razon_social, ruc)
-VALUES
-('Supermercados Peruanos S.A. (Plaza Vea)', '20100012345'),
-('Hipermercados Tottus S.A.', '20456789101'),
-('Corporación E.W. S.A. (Wong)', '20345678902'),
-('Makro Supermayorista S.A.', '20987654321'),
-('Distribuidora Mass S.A.C.', '20876543210'),
-('La Canasta Market E.I.R.L.', '20765432109'),
-('Super Almacenes El Buen Precio S.R.L.', '20654321098'),
-('Alimentos Selectos del Norte S.A.', '20543210987'),
-('Mercados del Sur E.I.R.L.', '20432109876'),
-('Grupo Alvi S.A.C.', '20321098765');
 
+INSERT INTO producto (descripcion, precio, disponible, id_restaurante,id_producto) 
+VALUES 
+('Hamburguesa Clásica', 8.50, TRUE, 1, 1),
+('Pizza Margarita', 12.00, TRUE, 2, 2),
+('Sushi Roll', 15.75, TRUE, 3, 3),
+('Ensalada César', 6.25, TRUE, 1, 4),
+('Tacos al Pastor', 7.00, TRUE, 2, 5),
+('Pasta Bolognesa', 10.50, FALSE, 3, 2),
+('Pollo Asado', 9.00, TRUE, 1, 5),
+('Tarta de Frutas', 5.00, TRUE, 2, 7),
+('Ceviche de Camarón', 13.00, TRUE, 3, 6),
+('Croquetas de Pollo', 4.50, TRUE, 1, 5);
 
+select * from producto;
 
-
-CREATE TABLE tienda (
-    id_tienda INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    horario_inicio TIME NOT NULL,
-    horario_fin TIME NOT NULL,
-    id_tienda_ubi INT NOT NULL,
-    direccion VARCHAR(255),
-    observacion TEXT,
-    sn VARCHAR(50),
-    id_empresa INT NOT NULL,
-    FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
+CREATE TABLE categoria (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    descripcion VARCHAR(255),
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO tienda (nombre, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn, id_empresa)
-VALUES
-('Tienda Centro', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central', 's', 1),
-('Tienda Norte', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL, 's', 2),
-('MiniMarket Sur', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos', 's', 3),
-('Express Oriente', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local', 's', 4),
-('SuperTienda Oeste', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL, 's', 5),
-('Tienda Plaza', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia', 's', 1),
-('Market Urbano', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano', 's', 2),
-('Comercial Andina', '08:15:00', '20:45:00', 7, 'Av. Andina 333', NULL, 's', 5),
-('Mercado Central', '06:00:00', '18:00:00', 8, 'Calle Comercio 999', 'Zona de abastos', 's', 6),
-('Tienda Express', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local', 's', 1);
-
-
-
-
-
-CREATE TABLE unidad (
-    id_unidad INT AUTO_INCREMENT PRIMARY KEY,
-    placa VARCHAR(10) NOT NULL UNIQUE,
-    año_fab INT NOT NULL,
-    altura DOUBLE NOT NULL,
-    ancho DOUBLE NOT NULL,
-    longitud DOUBLE NOT NULL,
-    peso_neto DOUBLE NOT NULL,
-    peso_util DOUBLE NOT NULL,
-    peso_bruto DOUBLE NOT NULL,
-    metro_cubico DOUBLE NOT NULL,
-    cod_tarj_circu VARCHAR(20),
-    estado VARCHAR(20) NOT NULL,
-    id_tienda INT NOT NULL,
-    FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
+CREATE TABLE producto_ingrediente (
+    id_producto_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
+	id_producto INT,
+    id_ingrediente INT
 );
 
-INSERT INTO unidad (
-    placa, año_fab, altura, ancho, longitud,
-    peso_neto, peso_util, peso_bruto, metro_cubico,
-    cod_tarj_circu, estado, id_tienda
-) VALUES
-('ABC123', 2018, 2.5, 2.4, 6.0, 3500, 1500, 5000, 36.0, 'TARJ-001', 'activo', 1),
-('XYZ789', 2020, 2.6, 2.5, 7.2, 3800, 1700, 5500, 45.0, 'TARJ-002', 'activo', 2),
-('LMN456', 2017, 2.4, 2.3, 6.5, 3400, 1600, 5000, 39.0, 'TARJ-003', 'activo', 3),
-('JHK321', 2019, 2.7, 2.6, 7.0, 3900, 1800, 5700, 45.8, 'TARJ-004', 'activo', 4),
-('POI987', 2021, 2.8, 2.5, 7.5, 4000, 1900, 5900, 47.5, 'TARJ-005', 'activo', 1),
-('QWE654', 2016, 2.3, 2.2, 6.2, 3300, 1400, 4700, 36.3, 'TARJ-006', 'mantenimiento', 2),
-('RTY321', 2015, 2.2, 2.1, 6.0, 3100, 1300, 4400, 33.0, 'TARJ-007', 'baja', 3),
-('UOP567', 2022, 2.9, 2.6, 8.0, 4100, 2000, 6100, 50.1, 'TARJ-008', 'activo', 4),
-('ZXC432', 2023, 3.0, 2.7, 8.5, 4200, 2100, 6300, 53.5, 'TARJ-009', 'activo', 1),
-('BNM678', 2014, 2.1, 2.0, 5.8, 2900, 1200, 4100, 30.2, 'TARJ-010', 'baja', 2);
+
+INSERT INTO categoria (nombre, descripcion) VALUES
+('Comida Rápida', 'Platos preparados de forma rápida, ideales para llevar'),
+('Italiana', 'Comidas típicas de la gastronomía italiana'),
+('Japonesa', 'Platos típicos de la cocina japonesa'),
+('Ensaladas', 'Platos fríos con vegetales, saludables y ligeros'),
+('Carnes', 'Platos basados en carne como ingrediente principal'),
+('Mariscos', 'Platos que tienen como base pescados o mariscos'),
+('Postres', 'Dulces o platos para cerrar una comida');
+
+select * from categoria;
+
+CREATE TABLE producto_ingrediente (
+    id_producto_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
+	id_producto INT,
+    id_ingrediente INT
+);
+
+CREATE TABLE ingrediente (
+    idingrediente INT AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(255),
+    descripcion VARCHAR(255),
+	creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO ingrediente (nombre, descripcion) VALUES
+-- Comida Rápida
+('Pan de Hamburguesa', 'Pan suave con sésamo para hamburguesas'),
+('Carne de Res', 'Carne molida para hamburguesa'),
+('Tortilla de Maíz', 'Tortilla tradicional usada en tacos'),
+('Pollo Desmenuzado', 'Pollo cocido y desmenuzado'),
+
+-- Italiana
+('Masa de Pizza', 'Masa base para pizza italiana'),
+('Queso Mozzarella', 'Queso fundido típico en pizzas y pastas'),
+('Salsa de Tomate', 'Salsa base para pizzas y pastas'),
+('Carne Molida', 'Usada comúnmente en salsas como la bolognesa'),
+
+-- Japonesa
+('Arroz para Sushi', 'Arroz especial para sushi, aderezado con vinagre'),
+('Alga Nori', 'Alga seca utilizada para envolver sushi'),
+('Camarón', 'Marisco común en sushi y ceviche'),
+
+-- Ensaladas
+('Lechuga Romana', 'Base fresca para ensaladas'),
+('Crutones', 'Pan tostado en cubos'),
+('Queso Parmesano', 'Queso rallado para ensaladas y pastas'),
+
+-- Carnes
+('Muslo de Pollo', 'Parte del pollo ideal para asar'),
+('Ajo', 'Usado como condimento en carnes'),
+
+-- Mariscos
+('Limón', 'Usado en ceviche para marinar'),
+('Cilantro', 'Hierba fresca muy usada en ceviches'),
+
+-- Postres
+('Frutas Mixtas', 'Mezcla de frutas frescas'),
+('Masa de Tarta', 'Base para tartas dulces');
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE persona (
+    id_persona INT AUTO_INCREMENT PRIMARY KEY,
+    nombres VARCHAR(100),
+    apellidos VARCHAR(100),
+    num_doc INT,
+    num_contacto INT,
+    num_wpp INT,
+    fecha_nac DATE,
+    correo VARCHAR(100),
+    direccion VARCHAR(200),
+    sexo VARCHAR(10),
+    cargo_id_cargo INT
+);
+
+INSERT INTO persona (nombres, apellidos, num_doc, num_contacto, num_wpp, fecha_nac, correo, direccion, sexo, cargo_id_cargo) VALUES
+('Carlos', 'Ramírez', 12345678, 987654321, 987654321, '1990-05-20', 'carlos.ramirez@example.com', 'Av. Siempre Viva 123', 'M', 1),
+('Lucía', 'Fernández', 87654321, 912345678, 912345678, '1985-03-14', 'lucia.fernandez@example.com', 'Calle Luna 456', 'F', 2),
+('Pedro', 'González', 11223344, 998877665, 998877665, '1992-11-02', 'pedro.gonzalez@example.com', 'Av. Sol 789', 'M', 1),
+('Ana', 'Torres', 44332211, 923456789, 923456789, '1998-07-07', 'ana.torres@example.com', 'Jr. Libertad 101', 'F', 3),
+('Jorge', 'Vargas', 33445566, 987123456, 987123456, '1980-12-01', 'jorge.vargas@example.com', 'Pasaje El Olivo 202', 'M', 2),
+('María', 'Ríos', 66778899, 934567890, 934567890, '1995-09-09', 'maria.rios@example.com', 'Av. Colonial 303', 'F', 4),
+('Luis', 'Castañeda', 55667788, 922334455, 922334455, '1991-02-18', 'luis.castaneda@example.com', 'Calle Comercio 404', 'M', 1),
+('Elena', 'Salas', 99887766, 933445566, 933445566, '1987-10-23', 'elena.salas@example.com', 'Jr. Amazonas 505', 'F', 3),
+('Andrés', 'Zamora', 77889900, 944556677, 944556677, '1993-04-12', 'andres.zamora@example.com', 'Av. Arequipa 606', 'M', 2),
+('Sofía', 'Quispe', 88990011, 955667788, 955667788, '1996-06-30', 'sofia.quispe@example.com', 'Jr. Cusco 707', 'F', 4);
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+CREATE TABLE cargo (
+    id_cargo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_cargo VARCHAR(100),
+    descripcion VARCHAR(255)
+);
+
+	INSERT INTO cargo (nombre_cargo, descripcion) VALUES
+	('Conductor', 'Responsable de la conducción de unidades de transporte'),
+	('Asistente de Logística', 'Apoya en tareas administrativas y logísticas'),
+	('Supervisor de Ruta', 'Supervisa rutas y cumplimiento de horarios'),
+	('Mecánico', 'Encargado del mantenimiento de las unidades'),
+	('Coordinador de Transporte', 'Coordina operaciones de transporte'),
+	('Auxiliar de Carga', 'Ayuda en la carga y descarga de mercadería'),
+	('Jefe de Operaciones', 'Gestiona todo el proceso operativo del transporte'),
+	('Recepcionista', 'Atiende llamadas y coordina con el equipo de transporte'),
+	('Inspector de Seguridad', 'Verifica el cumplimiento de normas de seguridad'),
+	('Planificador de Rutas', 'Diseña rutas optimizadas para las entregas');
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE cliente_corporativo (
+    id_cliente_corporativo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    razon_social VARCHAR(150),
+    direccion_fiscal VARCHAR(200),
+    empresa_id INT
+);
+
+INSERT INTO cliente_corporativo (nombre, razon_social, direccion_fiscal, empresa_id) VALUES
+('Inversiones Alpha', 'Inversiones Alpha S.A.C.', 'Av. República 123, Lima', 1),
+('Logística Beta', 'Logística Beta E.I.R.L.', 'Jr. Mercurio 456, Callao', 2),
+('Transporte Gama', 'Transporte Gama S.R.L.', 'Av. Los Álamos 789, Arequipa', 3),
+('Distribuciones Delta', 'Distribuciones Delta S.A.', 'Calle Central 100, Trujillo', 4),
+('Corporación Epsilon', 'Corporación Epsilon S.A.C.', 'Av. Las Palmeras 321, Cusco', 5),
+('Importaciones Zeta', 'Importaciones Zeta S.A.C.', 'Av. Amazonas 654, Iquitos', 6),
+('Servicios Kappa', 'Servicios Kappa S.R.L.', 'Jr. Independencia 888, Chiclayo', 7),
+('Almacenes Omega', 'Almacenes Omega S.A.', 'Calle Comercio 777, Piura', 8),
+('Empaques Sigma', 'Empaques Sigma E.I.R.L.', 'Av. Grau 999, Huancayo', 9),
+('Fletes Theta', 'Fletes Theta S.A.C.', 'Jr. Los Héroes 432, Tacna', 10);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE almacen (
+    id_almacen INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_almacen VARCHAR(100),
+    direccion VARCHAR(200),
+    id_locacion_peru INT,
+    cliente_corporativo_id INT
+);
+
+INSERT INTO almacen (nombre_almacen, direccion, id_locacion_peru, cliente_corporativo_id) VALUES
+('Almacén Central Lima', 'Av. Perú 123, Lima', 1, 1),
+('Depósito Callao', 'Jr. Marítimo 456, Callao', 2, 2),
+('Almacén Norte', 'Av. Libertad 789, Trujillo', 3, 3),
+('Centro Logístico Sur', 'Calle Sur 101, Arequipa', 4, 4),
+('Almacén Oriente', 'Av. Amazonas 202, Iquitos', 5, 5),
+('Depósito Andino', 'Jr. Inca 333, Cusco', 6, 6),
+('Almacén Piura', 'Calle Comercio 444, Piura', 7, 7),
+('Depósito Chiclayo', 'Av. Grau 555, Chiclayo', 8, 8),
+('Almacén Tacna', 'Jr. Héroes 666, Tacna', 9, 9),
+('Almacén Huancayo', 'Av. Real 777, Huancayo', 10, 10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class ClienteCorporativoDTO {
-
+public class CCAndAlmacen {
+    
     private int idClienteCorporativo;
     
 

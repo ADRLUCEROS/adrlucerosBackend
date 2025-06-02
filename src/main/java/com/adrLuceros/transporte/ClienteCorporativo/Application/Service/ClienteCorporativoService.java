@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.CCAndAlmacen;
 import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.CCAndEmpresa;
 import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.ClienteCorporativoDTO;
 import com.adrLuceros.transporte.ClienteCorporativo.Application.Mapper.CCMapperModelsAndDTO;
@@ -69,5 +70,13 @@ public class ClienteCorporativoService {
             throw new RuntimeException("Cliente Corporativo not found with id: " + clienteCorporativodDTO.getIdClienteCorporativo());
         }  
     }
+
+    public CCAndAlmacen findByidforAlmacen(int idClienteCorporativo) {
+        ClienteCorporativo clienteCorporativo = clienteCorporativoRepository.findById(idClienteCorporativo);
+            return ccMapperModelsAndDTO.ModelsToDTO(clienteCorporativo);
+        }
+       
+
+
     
 }

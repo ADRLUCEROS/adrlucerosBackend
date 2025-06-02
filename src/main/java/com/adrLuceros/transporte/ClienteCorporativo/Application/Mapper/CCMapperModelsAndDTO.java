@@ -3,6 +3,7 @@ package com.adrLuceros.transporte.ClienteCorporativo.Application.Mapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.CCAndAlmacen;
 import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.CCAndEmpresa;
 import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.ClienteCorporativoDTO;
 import com.adrLuceros.transporte.ClienteCorporativo.Domain.Models.ClienteCorporativo;
@@ -43,6 +44,12 @@ public class CCMapperModelsAndDTO {
         modelMapper.map(clienteCorporativoDTO, clienteCorporativo);
 
     }
+
+    public CCAndAlmacen ModelsToDTO(ClienteCorporativo clienteCorporativo) {
+
+        return modelMapper.map(clienteCorporativo, CCAndAlmacen.class);
+
+    }          
 
 
     
