@@ -11,5 +11,6 @@ public interface UnidadRepository {
     void save(Unidad unidad);
     void delete(Unidad unidad);
     void update(Unidad unidad);
+    Unidad findByPlaca(String placa);
     
 }

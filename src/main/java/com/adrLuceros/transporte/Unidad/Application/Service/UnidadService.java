@@ -53,5 +53,13 @@ public class UnidadService  {
         unidadRepository.update(unidadExistente);
     }
 
+    public UnidadDTO findByPlaca(String placa) {
+        Unidad unidad = unidadRepository.findByPlaca(placa);
+        if (unidad != null) {
+            return mapperUnidadApp.modelToDTO(unidad);
+        }
+        return null;
+    }
+
     
 }
