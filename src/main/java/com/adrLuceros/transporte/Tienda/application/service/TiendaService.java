@@ -31,27 +31,27 @@ public class TiendaService {
     }
 
     public List<TiendaEmpresaDTO> findAllTiendas() {
-    List<Tienda> tiendas = tiendaRepository.findAllTiendas();
-    List<TiendaEmpresaDTO> tiendaEmpresaList = new ArrayList<>();
-    
-for (Tienda tienda : tiendas) {
-    TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
-    
-    if (tiendaDTO.getIdEmpresa() == 0) {
-        tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));
-    } else {
-        EmpresaDTO empresa = empresaService.findById(tiendaDTO.getIdEmpresa());
+        List<Tienda> tiendas = tiendaRepository.findAllTiendas();
+        List<TiendaEmpresaDTO> tiendaEmpresaList = new ArrayList<>();
+        
+        for (Tienda tienda : tiendas) {
+            TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
+            
+            if (tiendaDTO.getIdEmpresa() == null || tiendaDTO.getIdEmpresa() == 0) {
+                tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));
+            } else {
+                EmpresaDTO empresa = empresaService.findById(tiendaDTO.getIdEmpresa());
 
-        if (empresa == null) {
-            // Puedes decidir omitirla o lanzar una excepción
-            tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));
-        } else {
-            tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresa, tiendaDTO));
+                if (empresa == null) {
+                    // Puedes decidir omitirla o lanzar una excepción
+                    tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));
+                } else {
+                    tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresa, tiendaDTO));
+                }
+            }
         }
-    }
-}
-    
-    return tiendaEmpresaList;
+        
+        return tiendaEmpresaList;
     }
 
     public TiendaEmpresaDTO findTiendaById(int idTienda) {
