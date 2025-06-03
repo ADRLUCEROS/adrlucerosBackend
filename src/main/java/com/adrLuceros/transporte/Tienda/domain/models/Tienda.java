@@ -22,6 +22,7 @@ public class Tienda {
     private String observacion;
     private String sn;
     private int idEmpresa;
+    private String codigoTienda;
 
     
 }

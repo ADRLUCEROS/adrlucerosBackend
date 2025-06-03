@@ -59,4 +59,13 @@ public class TiendaRepositoryInfra implements TiendaRepository {
         mysqlTiendaRepository.save(tiendaJpa);
     }
 
+    @Override
+    public Tienda findByNombreTiendaAndCodigoTienda(String nombreTienda, String codigoTienda) {
+     TiendaJpa tienda = mysqlTiendaRepository.findByNombreTiendaAndCodigoTienda(nombreTienda, codigoTienda);
+
+     Tienda tiendita = tienda != null ? mapperJpaToModels.JpaToModels(tienda) : null;
+
+    return tiendita;
+    }
+
 }

@@ -11,4 +11,5 @@ public interface TiendaRepository {
     List<Tienda> findAllTiendas();
     void updateTienda(Tienda tienda);
     void deleteTienda(Tienda tienda);
+    Tienda findByNombreTiendaAndCodigoTienda(String nombreTienda, String codigoTienda); 
 }

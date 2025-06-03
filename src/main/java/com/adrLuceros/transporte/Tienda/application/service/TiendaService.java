@@ -36,7 +36,8 @@ public class TiendaService {
     
     for (Tienda tienda : tiendas) {
         TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
-  
+            
+
         EmpresaDTO empresa = empresaService.findById(tiendaDTO.getIdEmpresa());
 
         
@@ -75,6 +76,14 @@ public class TiendaService {
         mapperTiendaModeltoDTO.updateMapper(tiendaDTO, tienda);
         tiendaRepository.updateTienda(tienda);
 
+    }  
+    
+    public TiendaDTO findByNombreTiendaAndCodigoTienda(String nombreTienda, String codigoTienda) {
+        Tienda tienda = tiendaRepository.findByNombreTiendaAndCodigoTienda(nombreTienda, codigoTienda);
+        if (tienda != null) {
+            return mapperTiendaModeltoDTO.modelToDTO(tienda);
+        }
+        return null;
     }   
 
     

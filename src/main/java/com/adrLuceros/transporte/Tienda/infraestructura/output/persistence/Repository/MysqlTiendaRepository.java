@@ -9,6 +9,8 @@ import com.adrLuceros.transporte.Tienda.infraestructura.output.persistence.Entit
 
 public interface MysqlTiendaRepository extends JpaRepository<TiendaJpa, Integer> {
 
+    TiendaJpa findByNombreTiendaAndCodigoTienda(String nombreTienda, String codigoTienda);
+
     
     
 }
