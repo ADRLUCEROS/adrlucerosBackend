@@ -34,15 +34,22 @@ public class TiendaService {
     List<Tienda> tiendas = tiendaRepository.findAllTiendas();
     List<TiendaEmpresaDTO> tiendaEmpresaList = new ArrayList<>();
     
-    for (Tienda tienda : tiendas) {
-        TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
-            
-
+for (Tienda tienda : tiendas) {
+    TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
+    
+    if (tiendaDTO.getIdEmpresa() == 0) {
+        tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));
+    } else {
         EmpresaDTO empresa = empresaService.findById(tiendaDTO.getIdEmpresa());
 
-        
-        tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresa, tiendaDTO));
+        if (empresa == null) {
+            // Puedes decidir omitirla o lanzar una excepción
+            tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));
+        } else {
+            tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOList(empresa, tiendaDTO));
+        }
     }
+}
     
     return tiendaEmpresaList;
     }

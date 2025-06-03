@@ -39,5 +39,21 @@ public class MapperRelacionTiendaEmpresa {
 
     }
 
+    public TiendaEmpresaDTO mapToTiendaEmpresaDTOListSinEmpresa(TiendaDTO tiendaDTO) {
+      
+        TiendaEmpresaDTO tiendaEmpresaDTO = new TiendaEmpresaDTO();
+        tiendaEmpresaDTO.setIdTienda(tiendaDTO.getIdTienda());
+        tiendaEmpresaDTO.setNombreTienda(tiendaDTO.getNombreTienda());
+        tiendaEmpresaDTO.setHorarioInicio(tiendaDTO.getHorarioInicio());
+        tiendaEmpresaDTO.setHorarioFin(tiendaDTO.getHorarioFin());
+        tiendaEmpresaDTO.setIdTiendaUbi(tiendaDTO.getIdTiendaUbi());
+        tiendaEmpresaDTO.setDireccion(tiendaDTO.getDireccion());
+        tiendaEmpresaDTO.setObservacion(tiendaDTO.getObservacion());
+        tiendaEmpresaDTO.setSn(tiendaDTO.getSn());
+        
+        return tiendaEmpresaDTO;
+
+    }
+
     
 }
