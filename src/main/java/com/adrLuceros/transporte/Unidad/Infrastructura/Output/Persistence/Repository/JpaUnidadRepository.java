@@ -8,6 +8,8 @@ import com.adrLuceros.transporte.Unidad.Infrastructura.Output.Persistence.Entity
 @Repository
 public interface JpaUnidadRepository extends JpaRepository<UnidadJpa, Integer> {
 
+    UnidadJpa findByPlaca(String placa);
+
 
     
 } 

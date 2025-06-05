@@ -1,6 +1,7 @@
 package com.adrLuceros.transporte.Unidad.Infrastructura.Output.Persistence.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -62,5 +63,12 @@ public class MysqlUnidadRepository implements UnidadRepository {
         UnidadJpa unidadJpa = mapperUnidadInfra.ModelToJpa(unidad);
         jpaUnidadRepository.save(unidadJpa);
     }
-    
+
+    @Override
+    public Unidad findByPlaca(String placa) {
+        return Optional.ofNullable(jpaUnidadRepository.findByPlaca(placa))
+                .map(mapperUnidadInfra::JpatoModel)
+                .orElse(null);
+    }
+
 }

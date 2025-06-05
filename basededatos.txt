@@ -1,7 +1,7 @@
 CREATE TABLE empresa (
     id_empresa INT AUTO_INCREMENT PRIMARY KEY,
-    razon_social VARCHAR(150) NOT NULL,
-    ruc VARCHAR(11) NOT NULL UNIQUE
+    razon_social VARCHAR(150) ,
+    ruc VARCHAR(11) UNIQUE
 );
 
 INSERT INTO empresa (razon_social, ruc)
@@ -30,7 +30,7 @@ CREATE TABLE tienda (
     direccion VARCHAR(255),
     observacion TEXT,
     sn VARCHAR(50),
-    id_empresa INT 
+    id_empresa INT
 );
 
 INSERT INTO tienda (nombre, codigo_tienda, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn, id_empresa)
@@ -51,18 +51,18 @@ VALUES
 CREATE TABLE unidad (
     id_unidad INT AUTO_INCREMENT PRIMARY KEY,
     placa VARCHAR(10) NOT NULL UNIQUE,
-    año_fab INT NOT NULL,
-    altura DOUBLE NOT NULL,
-    ancho DOUBLE NOT NULL,
-    longitud DOUBLE NOT NULL,
-    peso_neto DOUBLE NOT NULL,
-    peso_util DOUBLE NOT NULL,
-    peso_bruto DOUBLE NOT NULL,
-    metro_cubico DOUBLE NOT NULL,
+    año_fab INT ,
+    altura DOUBLE ,
+    ancho DOUBLE ,
+    longitud DOUBLE ,
+    peso_neto DOUBLE ,
+    peso_util DOUBLE ,
+    peso_bruto DOUBLE ,
+    metro_cubico DOUBLE ,
     cod_tarj_circu VARCHAR(20),
-    estado VARCHAR(20) NOT NULL,
-    id_tienda INT NOT NULL,
-    FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
+    estado VARCHAR(20) ,
+    id_tienda INT
+
 );
 
 INSERT INTO unidad (

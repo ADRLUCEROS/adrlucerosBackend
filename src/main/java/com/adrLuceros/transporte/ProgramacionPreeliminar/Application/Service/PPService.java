@@ -27,6 +27,7 @@ public class PPService {
     private final TiendaService tiendaService;
     private final AlmacenService almacenService;
     private final UnidadService unidadService;
+
     public PPService(PPMaper ppMapper, TiendaService tiendaService, AlmacenService almacenService, UnidadService unidadService) {
         this.ppMapper = ppMapper;
         this.tiendaService = tiendaService;
@@ -44,6 +45,7 @@ public class PPService {
                 .open(is);
         List<ModelExcel> modelExcelList = ppMapper.Mapear(workbook); 
         logicaparaTienda(modelExcelList);
+        logicaparaUnidad(modelExcelList);
 
         return modelExcelList;
     }
@@ -51,11 +53,11 @@ public class PPService {
 
     private void logicaparaTienda(List<ModelExcel>   modelExcelList  ){
         for (ModelExcel modelExcel : modelExcelList) {
-           
+
               TiendaDTO tiendaTrue =  tiendaService.findByNombreTiendaAndCodigoTienda(modelExcel.getTienda(), modelExcel.getDestinatario());
             
             if (tiendaTrue != null) {
-
+                tiendaTrue = new TiendaDTO();
                 tiendaTrue.setNombreTienda(modelExcel.getTienda());
                 tiendaTrue.setCodigoTienda(modelExcel.getDestinatario());
                 tiendaTrue.setDireccion(modelExcel.getDireccion());
@@ -76,8 +78,16 @@ public class PPService {
 
     }
 
-    private UnidadDTO logicaparaUnidad(List<ModelExcel>   modelExcelList  ){
-        return null;
+    private void logicaparaUnidad(List<ModelExcel>   modelExcelList  ){
+        for (ModelExcel modelExcel : modelExcelList) {
+            UnidadDTO unidadTrue = unidadService.findByPlaca( modelExcel.getPlaca());
+            if (unidadTrue == null) {
+                unidadTrue = new UnidadDTO();
+                unidadTrue.setPlaca( modelExcel.getPlaca());
+                unidadService.save(unidadTrue);
+            }
+
+        }
 
     }
 
