@@ -1,87 +1,43 @@
+-- EMPRESA
 CREATE TABLE empresa (
     id_empresa INT AUTO_INCREMENT PRIMARY KEY,
-    razon_social VARCHAR(150) ,
-    ruc VARCHAR(11) UNIQUE
+    razon_social VARCHAR(150),
+    ruc VARCHAR(11) UNIQUE,
+    sn_activo VARCHAR(1)
 );
 
-INSERT INTO empresa (razon_social, ruc)
-VALUES
-('Supermercados Peruanos S.A. (Plaza Vea)', '20100012345'),
-('Hipermercados Tottus S.A.', '20456789101'),
-('Corporación E.W. S.A. (Wong)', '20345678902'),
-('Makro Supermayorista S.A.', '20987654321'),
-('Distribuidora Mass S.A.C.', '20876543210'),
-('La Canasta Market E.I.R.L.', '20765432109'),
-('Super Almacenes El Buen Precio S.R.L.', '20654321098'),
-('Alimentos Selectos del Norte S.A.', '20543210987'),
-('Mercados del Sur E.I.R.L.', '20432109876'),
-('Grupo Alvi S.A.C.', '20321098765');
-
-
-
-
+-- TIENDA
 CREATE TABLE tienda (
     id_tienda INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) ,
-    codigo_tienda VARCHAR(100), -- NUEVA COLUMNA
-    horario_inicio TIME ,
-    horario_fin TIME ,
-    id_tienda_ubi INT ,
+    nombre VARCHAR(100),
+    codigo_tienda VARCHAR(100),
+    horario_inicio TIME,
+    horario_fin TIME,
+    id_tienda_ubi INT,
     direccion VARCHAR(255),
     observacion TEXT,
-    sn VARCHAR(50),
-    id_empresa INT
+    id_empresa INT,
+    sn_activo VARCHAR(1)
 );
 
-INSERT INTO tienda (nombre, codigo_tienda, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, sn, id_empresa)
-VALUES
-('Tienda Centro',     'T001', '08:00:00', '21:00:00', 1, 'Av. Principal 123',      'Cerca de la plaza central', 'A1', 1),
-('Tienda Norte',      'T002', '09:00:00', '20:00:00', 2, 'Calle Norte 456',        NULL,                        'B2', 2),
-('MiniMarket Sur',    'T003', '07:30:00', '22:00:00', 3, 'Av. Sur 789',            'Atiende domingos',         'C3', 3),
-('Express Oriente',   'T004', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321',        'Pequeño local',            'D4', 4),
-('SuperTienda Oeste', 'T005', '08:30:00', '19:30:00', 5, 'Calle Oeste 654',        NULL,                       'E5', 5),
-('Tienda Plaza',      'T006', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111',        'Incluye farmacia',         'F6', 1),
-('Market Urbano',     'T007', '07:00:00', '23:00:00', 6, 'Av. Urbana 222',         '24 horas en verano',       'G7', 2),
-('Comercial Andina',  'T008', '08:15:00', '20:45:00', 7, 'Av. Andina 333',         NULL,                       'H8', 5),
-('Mercado Central',   'T009', '06:00:00', '18:00:00', 8, 'Calle Comercio 999',     'Zona de abastos',          'I9', 6),
-('Tienda Express',    'T010', '10:00:00', '22:00:00', 9, 'Jr. Express 100',        'Nuevo local',              'J0', 1);
-
-
-
+-- UNIDAD
 CREATE TABLE unidad (
     id_unidad INT AUTO_INCREMENT PRIMARY KEY,
     placa VARCHAR(10) NOT NULL UNIQUE,
-    año_fab INT ,
-    altura DOUBLE ,
-    ancho DOUBLE ,
-    longitud DOUBLE ,
-    peso_neto DOUBLE ,
-    peso_util DOUBLE ,
-    peso_bruto DOUBLE ,
-    metro_cubico DOUBLE ,
+    año_fab INT,
+    altura DOUBLE,
+    ancho DOUBLE,
+    longitud DOUBLE,
+    peso_neto DOUBLE,
+    peso_util DOUBLE,
+    peso_bruto DOUBLE,
+    metro_cubico DOUBLE,
     cod_tarj_circu VARCHAR(20),
-    estado VARCHAR(20) ,
-    id_tienda INT
-
+    id_tienda INT,
+    estado VARCHAR(1)
 );
 
-INSERT INTO unidad (
-    placa, año_fab, altura, ancho, longitud,
-    peso_neto, peso_util, peso_bruto, metro_cubico,
-    cod_tarj_circu, estado, id_tienda
-) VALUES
-('ABC123', 2018, 2.5, 2.4, 6.0, 3500, 1500, 5000, 36.0, 'TARJ-001', 'activo', 1),
-('XYZ789', 2020, 2.6, 2.5, 7.2, 3800, 1700, 5500, 45.0, 'TARJ-002', 'activo', 2),
-('LMN456', 2017, 2.4, 2.3, 6.5, 3400, 1600, 5000, 39.0, 'TARJ-003', 'activo', 3),
-('JHK321', 2019, 2.7, 2.6, 7.0, 3900, 1800, 5700, 45.8, 'TARJ-004', 'activo', 4),
-('POI987', 2021, 2.8, 2.5, 7.5, 4000, 1900, 5900, 47.5, 'TARJ-005', 'activo', 1),
-('QWE654', 2016, 2.3, 2.2, 6.2, 3300, 1400, 4700, 36.3, 'TARJ-006', 'mantenimiento', 2),
-('RTY321', 2015, 2.2, 2.1, 6.0, 3100, 1300, 4400, 33.0, 'TARJ-007', 'baja', 3),
-('UOP567', 2022, 2.9, 2.6, 8.0, 4100, 2000, 6100, 50.1, 'TARJ-008', 'activo', 4),
-('ZXC432', 2023, 3.0, 2.7, 8.5, 4200, 2100, 6300, 53.5, 'TARJ-009', 'activo', 1),
-('BNM678', 2014, 2.1, 2.0, 5.8, 2900, 1200, 4100, 30.2, 'TARJ-010', 'baja', 2);
-
-
+-- PERSONA
 CREATE TABLE persona (
     id_persona INT AUTO_INCREMENT PRIMARY KEY,
     nombres VARCHAR(100),
@@ -93,102 +49,127 @@ CREATE TABLE persona (
     correo VARCHAR(100),
     direccion VARCHAR(200),
     sexo VARCHAR(10),
-    cargo_id_cargo INT
+    cargo_id_cargo INT,
+    sn_activo VARCHAR(1)
 );
 
-INSERT INTO persona (nombres, apellidos, num_doc, num_contacto, num_wpp, fecha_nac, correo, direccion, sexo, cargo_id_cargo) VALUES
-('Carlos', 'Ramírez', 12345678, 987654321, 987654321, '1990-05-20', 'carlos.ramirez@example.com', 'Av. Siempre Viva 123', 'M', 1),
-('Lucía', 'Fernández', 87654321, 912345678, 912345678, '1985-03-14', 'lucia.fernandez@example.com', 'Calle Luna 456', 'F', 2),
-('Pedro', 'González', 11223344, 998877665, 998877665, '1992-11-02', 'pedro.gonzalez@example.com', 'Av. Sol 789', 'M', 1),
-('Ana', 'Torres', 44332211, 923456789, 923456789, '1998-07-07', 'ana.torres@example.com', 'Jr. Libertad 101', 'F', 3),
-('Jorge', 'Vargas', 33445566, 987123456, 987123456, '1980-12-01', 'jorge.vargas@example.com', 'Pasaje El Olivo 202', 'M', 2),
-('María', 'Ríos', 66778899, 934567890, 934567890, '1995-09-09', 'maria.rios@example.com', 'Av. Colonial 303', 'F', 4),
-('Luis', 'Castañeda', 55667788, 922334455, 922334455, '1991-02-18', 'luis.castaneda@example.com', 'Calle Comercio 404', 'M', 1),
-('Elena', 'Salas', 99887766, 933445566, 933445566, '1987-10-23', 'elena.salas@example.com', 'Jr. Amazonas 505', 'F', 3),
-('Andrés', 'Zamora', 77889900, 944556677, 944556677, '1993-04-12', 'andres.zamora@example.com', 'Av. Arequipa 606', 'M', 2),
-('Sofía', 'Quispe', 88990011, 955667788, 955667788, '1996-06-30', 'sofia.quispe@example.com', 'Jr. Cusco 707', 'F', 4);
-
-
-------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
+-- CARGO
 CREATE TABLE cargo (
     id_cargo INT AUTO_INCREMENT PRIMARY KEY,
     nombre_cargo VARCHAR(100),
-    descripcion VARCHAR(255)
+    descripcion VARCHAR(255),
+    sn_activo VARCHAR(1)
 );
 
-	INSERT INTO cargo (nombre_cargo, descripcion) VALUES
-	('Conductor', 'Responsable de la conducción de unidades de transporte'),
-	('Asistente de Logística', 'Apoya en tareas administrativas y logísticas'),
-	('Supervisor de Ruta', 'Supervisa rutas y cumplimiento de horarios'),
-	('Mecánico', 'Encargado del mantenimiento de las unidades'),
-	('Coordinador de Transporte', 'Coordina operaciones de transporte'),
-	('Auxiliar de Carga', 'Ayuda en la carga y descarga de mercadería'),
-	('Jefe de Operaciones', 'Gestiona todo el proceso operativo del transporte'),
-	('Recepcionista', 'Atiende llamadas y coordina con el equipo de transporte'),
-	('Inspector de Seguridad', 'Verifica el cumplimiento de normas de seguridad'),
-	('Planificador de Rutas', 'Diseña rutas optimizadas para las entregas');
-
-
-
-------------------------------------------------------------------------------------------------------------------------------
-
-
+-- CLIENTE CORPORATIVO
 CREATE TABLE cliente_corporativo (
     id_cliente_corporativo INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
     razon_social VARCHAR(150),
     direccion_fiscal VARCHAR(200),
-    empresa_id INT
+    empresa_id INT,
+    sn_activo VARCHAR(1)
 );
 
-INSERT INTO cliente_corporativo (nombre, razon_social, direccion_fiscal, empresa_id) VALUES
-('Inversiones Alpha', 'Inversiones Alpha S.A.C.', 'Av. República 123, Lima', 1),
-('Logística Beta', 'Logística Beta E.I.R.L.', 'Jr. Mercurio 456, Callao', 2),
-('Transporte Gama', 'Transporte Gama S.R.L.', 'Av. Los Álamos 789, Arequipa', 3),
-('Distribuciones Delta', 'Distribuciones Delta S.A.', 'Calle Central 100, Trujillo', 4),
-('Corporación Epsilon', 'Corporación Epsilon S.A.C.', 'Av. Las Palmeras 321, Cusco', 5),
-('Importaciones Zeta', 'Importaciones Zeta S.A.C.', 'Av. Amazonas 654, Iquitos', 6),
-('Servicios Kappa', 'Servicios Kappa S.R.L.', 'Jr. Independencia 888, Chiclayo', 7),
-('Almacenes Omega', 'Almacenes Omega S.A.', 'Calle Comercio 777, Piura', 8),
-('Empaques Sigma', 'Empaques Sigma E.I.R.L.', 'Av. Grau 999, Huancayo', 9),
-('Fletes Theta', 'Fletes Theta S.A.C.', 'Jr. Los Héroes 432, Tacna', 10);
-
-------------------------------------------------------------------------------------------------------------------------------
-
-
+-- ALMACÉN
 CREATE TABLE almacen (
     id_almacen INT AUTO_INCREMENT PRIMARY KEY,
     nombre_almacen VARCHAR(100),
     direccion VARCHAR(200),
     id_locacion_peru INT,
-    cliente_corporativo_id INT
+    cliente_corporativo_id INT,
+    sn_activo VARCHAR(1)
 );
 
-INSERT INTO almacen (nombre_almacen, direccion, id_locacion_peru, cliente_corporativo_id) VALUES
-('Almacén Central Lima', 'Av. Perú 123, Lima', 1, 1),
-('Depósito Callao', 'Jr. Marítimo 456, Callao', 2, 2),
-('Almacén Norte', 'Av. Libertad 789, Trujillo', 3, 3),
-('Centro Logístico Sur', 'Calle Sur 101, Arequipa', 4, 4),
-('Almacén Oriente', 'Av. Amazonas 202, Iquitos', 5, 5),
-('Depósito Andino', 'Jr. Inca 333, Cusco', 6, 6),
-('Almacén Piura', 'Calle Comercio 444, Piura', 7, 7),
-('Depósito Chiclayo', 'Av. Grau 555, Chiclayo', 8, 8),
-('Almacén Tacna', 'Jr. Héroes 666, Tacna', 9, 9),
-('Almacén Huancayo', 'Av. Real 777, Huancayo', 10, 10);
+
+
+INSERT INTO empresa (razon_social, ruc, sn_activo)
+VALUES
+('Supermercados Peruanos S.A. (Plaza Vea)', '20100012345', 'S'),
+('Hipermercados Tottus S.A.', '20456789101', 'S'),
+('Corporación E.W. S.A. (Wong)', '20345678902', 'S'),
+('Makro Supermayorista S.A.', '20987654321', 'S'),
+('Distribuidora Mass S.A.C.', '20876543210', 'S'),
+('La Canasta Market E.I.R.L.', '20765432109', 'S'),
+('Super Almacenes El Buen Precio S.R.L.', '20654321098', 'S'),
+('Alimentos Selectos del Norte S.A.', '20543210987', 'S'),
+('Mercados del Sur E.I.R.L.', '20432109876', 'S'),
+('Grupo Alvi S.A.C.', '20321098765', 'S');
+
+INSERT INTO tienda (nombre, codigo_tienda, horario_inicio, horario_fin, id_tienda_ubi, direccion, observacion, id_empresa, sn_activo)
+VALUES
+('Tienda Centro', 'T001', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central',  1, 'S'),
+('Tienda Norte', 'T002', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL,  2, 'S'),
+('MiniMarket Sur', 'T003', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos',  3, 'S'),
+('Express Oriente', 'T004', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local',  4, 'S'),
+('SuperTienda Oeste', 'T005', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL,  5, 'S'),
+('Tienda Plaza', 'T006', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia',  1, 'S'),
+('Market Urbano', 'T007', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano',  2, 'S'),
+('Comercial Andina', 'T008', '08:15:00', '20:45:00', 7, 'Av. Andina 333', NULL,  5, 'S'),
+('Mercado Central', 'T009', '06:00:00', '18:00:00', 8, 'Calle Comercio 999', 'Zona de abastos',  6, 'S'),
+('Tienda Express', 'T010', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local',  1, 'S');
+
+
+INSERT INTO unidad ( placa, año_fab, altura, ancho, longitud, peso_neto, peso_util, peso_bruto, metro_cubico,cod_tarj_circu, id_tienda, estado) VALUES
+('ABC123', 2018, 2.5, 2.4, 6.0, 3500, 1500, 5000, 36.0, 'TARJ-001',  1, 'S'),
+('XYZ789', 2020, 2.6, 2.5, 7.2, 3800, 1700, 5500, 45.0, 'TARJ-002',  2, 'S'),
+('LMN456', 2017, 2.4, 2.3, 6.5, 3400, 1600, 5000, 39.0, 'TARJ-003',  3, 'S'),
+('JHK321', 2019, 2.7, 2.6, 7.0, 3900, 1800, 5700, 45.8, 'TARJ-004',  4, 'S'),
+('POI987', 2021, 2.8, 2.5, 7.5, 4000, 1900, 5900, 47.5, 'TARJ-005',  1, 'S'),
+('QWE654', 2016, 2.3, 2.2, 6.2, 3300, 1400, 4700, 36.3, 'TARJ-006',  2, 'S'),
+('RTY321', 2015, 2.2, 2.1, 6.0, 3100, 1300, 4400, 33.0, 'TARJ-007',  3, 'S'),
+('UOP567', 2022, 2.9, 2.6, 8.0, 4100, 2000, 6100, 50.1, 'TARJ-008',  4, 'S'),
+('ZXC432', 2023, 3.0, 2.7, 8.5, 4200, 2100, 6300, 53.5, 'TARJ-009',  1, 'S'),
+('BNM678', 2014, 2.1, 2.0, 5.8, 2900, 1200, 4100, 30.2, 'TARJ-010',  2, 'S');
 
 
 
+INSERT INTO persona (nombres, apellidos, num_doc, num_contacto, num_wpp, fecha_nac, correo, direccion, sexo, cargo_id_cargo, sn_activo) VALUES
+('Carlos', 'Ramírez', 12345678, 987654321, 987654321, '1990-05-20', 'carlos.ramirez@example.com', 'Av. Siempre Viva 123', 'M', 1, 'S'),
+('Lucía', 'Fernández', 87654321, 912345678, 912345678, '1985-03-14', 'lucia.fernandez@example.com', 'Calle Luna 456', 'F', 2, 'S'),
+('Pedro', 'González', 11223344, 998877665, 998877665, '1992-11-02', 'pedro.gonzalez@example.com', 'Av. Sol 789', 'M', 1, 'S'),
+('Ana', 'Torres', 44332211, 923456789, 923456789, '1998-07-07', 'ana.torres@example.com', 'Jr. Libertad 101', 'F', 3, 'S'),
+('Jorge', 'Vargas', 33445566, 987123456, 987123456, '1980-12-01', 'jorge.vargas@example.com', 'Pasaje El Olivo 202', 'M', 2, 'S'),
+('María', 'Ríos', 66778899, 934567890, 934567890, '1995-09-09', 'maria.rios@example.com', 'Av. Colonial 303', 'F', 4, 'S'),
+('Luis', 'Castañeda', 55667788, 922334455, 922334455, '1991-02-18', 'luis.castaneda@example.com', 'Calle Comercio 404', 'M', 1, 'S'),
+('Elena', 'Salas', 99887766, 933445566, 933445566, '1987-10-23', 'elena.salas@example.com', 'Jr. Amazonas 505', 'F', 3, 'S'),
+('Andrés', 'Zamora', 77889900, 944556677, 944556677, '1993-04-12', 'andres.zamora@example.com', 'Av. Arequipa 606', 'M', 2, 'S'),
+('Sofía', 'Quispe', 88990011, 955667788, 955667788, '1996-06-30', 'sofia.quispe@example.com', 'Jr. Cusco 707', 'F', 4, 'S');
+
+INSERT INTO cargo (nombre_cargo, descripcion, sn_activo) VALUES
+('Conductor', 'Responsable de la conducción de unidades de transporte', 'S'),
+('Asistente de Logística', 'Apoya en tareas administrativas y logísticas', 'S'),
+('Supervisor de Ruta', 'Supervisa rutas y cumplimiento de horarios', 'S'),
+('Mecánico', 'Encargado del mantenimiento de las unidades', 'S'),
+('Coordinador de Transporte', 'Coordina operaciones de transporte', 'S'),
+('Auxiliar de Carga', 'Ayuda en la carga y descarga de mercadería', 'S'),
+('Jefe de Operaciones', 'Gestiona todo el proceso operativo del transporte', 'S'),
+('Recepcionista', 'Atiende llamadas y coordina con el equipo de transporte', 'S'),
+('Inspector de Seguridad', 'Verifica el cumplimiento de normas de seguridad', 'S'),
+('Planificador de Rutas', 'Diseña rutas optimizadas para las entregas', 'S');
 
 
+INSERT INTO cliente_corporativo (nombre, razon_social, direccion_fiscal, empresa_id, sn_activo) VALUES
+('Inversiones Alpha', 'Inversiones Alpha S.A.C.', 'Av. República 123, Lima', 1, 'S'),
+('Logística Beta', 'Logística Beta E.I.R.L.', 'Jr. Mercurio 456, Callao', 2, 'S'),
+('Transporte Gama', 'Transporte Gama S.R.L.', 'Av. Los Álamos 789, Arequipa', 3, 'S'),
+('Distribuciones Delta', 'Distribuciones Delta S.A.', 'Calle Central 100, Trujillo', 4, 'S'),
+('Corporación Epsilon', 'Corporación Epsilon S.A.C.', 'Av. Las Palmeras 321, Cusco', 5, 'S'),
+('Importaciones Zeta', 'Importaciones Zeta S.A.C.', 'Av. Amazonas 654, Iquitos', 6, 'S'),
+('Servicios Kappa', 'Servicios Kappa S.R.L.', 'Jr. Independencia 888, Chiclayo', 7, 'S'),
+('Almacenes Omega', 'Almacenes Omega S.A.', 'Calle Comercio 777, Piura', 8, 'S'),
+('Empaques Sigma', 'Empaques Sigma E.I.R.L.', 'Av. Grau 999, Huancayo', 9, 'S'),
+('Fletes Theta', 'Fletes Theta S.A.C.', 'Jr. Los Héroes 432, Tacna', 10, 'S');
 
 
-
-
-
-
-
-select * from tienda;
+INSERT INTO almacen (nombre_almacen, direccion, id_locacion_peru, cliente_corporativo_id, sn_activo) VALUES
+('Almacén Central Lima', 'Av. Perú 123, Lima', 1, 1, 'S'),
+('Depósito Callao', 'Jr. Marítimo 456, Callao', 2, 2, 'S'),
+('Almacén Norte', 'Av. Libertad 789, Trujillo', 3, 3, 'S'),
+('Centro Logístico Sur', 'Calle Sur 101, Arequipa', 4, 4, 'S'),
+('Almacén Oriente', 'Av. Amazonas 202, Iquitos', 5, 5, 'S'),
+('Depósito Andino', 'Jr. Inca 333, Cusco', 6, 6, 'S'),
+('Almacén Piura', 'Calle Comercio 444, Piura', 7, 7, 'S'),
+('Depósito Chiclayo', 'Av. Grau 555, Chiclayo', 8, 8, 'S'),
+('Almacén Tacna', 'Jr. Héroes 666, Tacna', 9, 9, 'S'),
+('Almacén Huancayo', 'Av. Real 777, Huancayo', 10, 10, 'S');
