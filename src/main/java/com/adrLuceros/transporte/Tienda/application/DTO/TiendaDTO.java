@@ -2,6 +2,7 @@ package com.adrLuceros.transporte.Tienda.application.DTO;
 
 import java.time.LocalTime;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,7 @@ public class TiendaDTO {
     private int idTiendaUbi;
     private String direccion;
     private String observacion;
-    private String sn;
+    private String sn_activo;
     private Integer idEmpresa;
     private String codigoTienda;
-    
 }

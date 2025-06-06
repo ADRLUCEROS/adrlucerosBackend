@@ -27,5 +27,7 @@ public class CargoJpa {
     private String nombre_cargo;
     @Column(name = "descripcion")
     private String descripcion;
+    @Column(name = "sn_activo")
+    private String snActivo;
     
 }

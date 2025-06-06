@@ -18,5 +18,6 @@ public class AlmacenAndCC {
     private String direccion;
     private int id_locacion_peru;
     private CCAndAlmacen clienteCorporativo;
+    private String snActivo;
     
 }

@@ -13,5 +13,6 @@ public class Cargo {
     private int idCargo;
     private String nombre_cargo;
     private String descripcion;
+    private String snActivo;
     
 }

@@ -37,7 +37,7 @@ public class TiendaService {
         for (Tienda tienda : tiendas) {
             TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
             
-            if(tiendaDTO.getSn() == null) continue;
+            if(tiendaDTO.getSn_activo() == null) continue;
 
             if (tiendaDTO.getIdEmpresa() == null || tiendaDTO.getIdEmpresa() == 0) {
                 tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));

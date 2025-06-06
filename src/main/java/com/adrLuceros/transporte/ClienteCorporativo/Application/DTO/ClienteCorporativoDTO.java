@@ -18,5 +18,8 @@ public class ClienteCorporativoDTO {
     private String razonSocial;
 
     private String direccionFiscal;
+
+
+    private String snActivo;
     
 }

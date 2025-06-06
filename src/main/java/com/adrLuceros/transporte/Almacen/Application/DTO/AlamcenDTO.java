@@ -1,5 +1,6 @@
 package com.adrLuceros.transporte.Almacen.Application.DTO;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,6 @@ public class AlamcenDTO {
     private String direccion;
     private int id_locacion_peru;
     private int clienteCorporativoId;
+    private String snActivo;
     
 }

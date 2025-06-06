@@ -35,5 +35,8 @@ public class ClienteCorporativoJpa {
 
     @Column(name = "empresa_id")
     private int empresaId;
+
+    @Column(name = "sn_activo")
+    private String snActivo;
     
 }

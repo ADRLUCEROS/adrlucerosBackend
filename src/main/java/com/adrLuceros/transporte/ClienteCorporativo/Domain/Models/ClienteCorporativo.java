@@ -1,5 +1,6 @@
 package com.adrLuceros.transporte.ClienteCorporativo.Domain.Models;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,7 @@ public class ClienteCorporativo {
     private String direccionFiscal;
 
     private int empresaId;
+
+    private String snActivo;
     
 }

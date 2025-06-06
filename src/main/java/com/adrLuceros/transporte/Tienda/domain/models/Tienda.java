@@ -20,7 +20,7 @@ public class Tienda {
     private int idTiendaUbi;
     private String direccion;
     private String observacion;
-    private String sn;
+    private String sn_activo;
     private Integer idEmpresa;
     private String codigoTienda;
 

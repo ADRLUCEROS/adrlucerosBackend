@@ -3,6 +3,7 @@ package com.adrLuceros.transporte.Persona.Domain.Modal;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class Persona {
     private String direccion;
     private String sexo;
     private int cargoIdCargo;
+    private String snActivo;
 
 
     

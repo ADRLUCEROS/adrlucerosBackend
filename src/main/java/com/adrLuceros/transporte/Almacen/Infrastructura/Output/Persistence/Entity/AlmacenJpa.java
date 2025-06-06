@@ -34,5 +34,8 @@ public class AlmacenJpa {
 
     @Column(name = "cliente_corporativo_id")
     private int clienteCorporativoId;
+
+    @Column(name = "sn_activo")
+    private String snActivo;
     
 }

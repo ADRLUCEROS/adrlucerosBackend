@@ -45,6 +45,8 @@ public class PersonaJpa {
     private String sexo;
     @Column(name = "cargo_id_cargo")    
     private int cargoIdCargo;
+    @Column(name = "sn_activo")
+    private String snActivo;
 
     
     

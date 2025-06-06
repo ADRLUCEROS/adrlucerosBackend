@@ -29,5 +29,8 @@ public class EmpresaJpa {
 
     @Column(name = "ruc")
     private String ruc; 
+
+    @Column(name = "sn_activo")
+    private String snActivo;
     
 }
