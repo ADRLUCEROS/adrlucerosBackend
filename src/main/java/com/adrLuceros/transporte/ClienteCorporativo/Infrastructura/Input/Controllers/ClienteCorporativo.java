@@ -16,7 +16,7 @@ import com.adrLuceros.transporte.ClienteCorporativo.Application.DTO.ClienteCorpo
 import com.adrLuceros.transporte.ClienteCorporativo.Application.Service.ClienteCorporativoService;
 
 @RestController
-@RequestMapping("/api/clientecorporativo")
+@RequestMapping("/api/cliente-corporativo")
 
 
 public class ClienteCorporativo {
