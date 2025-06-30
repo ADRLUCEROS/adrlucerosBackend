@@ -41,7 +41,7 @@ public class PPService {
 
         Workbook workbook = StreamingReader.builder()
                 .rowCacheSize(100) // Número de filas en caché
-                .bufferSize(4096) // Tamaño del búfer
+                .bufferSize(4096) // Tamano del búfer
                 .open(is);
         List<ModelExcel> modelExcelList = ppMapper.Mapear(workbook); 
         logicaparaTienda(modelExcelList);

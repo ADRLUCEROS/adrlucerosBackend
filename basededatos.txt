@@ -24,7 +24,7 @@ CREATE TABLE tienda (
 CREATE TABLE unidad (
     id_unidad INT AUTO_INCREMENT PRIMARY KEY,
     placa VARCHAR(10) NOT NULL UNIQUE,
-    año_fab INT,
+    ano_fab INT,
     altura DOUBLE,
     ancho DOUBLE,
     longitud DOUBLE,
@@ -101,7 +101,7 @@ VALUES
 ('Tienda Centro', 'T001', '08:00:00', '21:00:00', 1, 'Av. Principal 123', 'Cerca de la plaza central',  1, 'S'),
 ('Tienda Norte', 'T002', '09:00:00', '20:00:00', 2, 'Calle Norte 456', NULL,  2, 'S'),
 ('MiniMarket Sur', 'T003', '07:30:00', '22:00:00', 3, 'Av. Sur 789', 'Atiende domingos',  3, 'S'),
-('Express Oriente', 'T004', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeño local',  4, 'S'),
+('Express Oriente', 'T004', '10:00:00', '18:00:00', 4, 'Jr. Oriente 321', 'Pequeno local',  4, 'S'),
 ('SuperTienda Oeste', 'T005', '08:30:00', '19:30:00', 5, 'Calle Oeste 654', NULL,  5, 'S'),
 ('Tienda Plaza', 'T006', '09:00:00', '21:00:00', 1, 'Plaza Mayor 111', 'Incluye farmacia',  1, 'S'),
 ('Market Urbano', 'T007', '07:00:00', '23:00:00', 6, 'Av. Urbana 222', '24 horas en verano',  2, 'S'),
@@ -110,7 +110,7 @@ VALUES
 ('Tienda Express', 'T010', '10:00:00', '22:00:00', 9, 'Jr. Express 100', 'Nuevo local',  1, 'S');
 
 
-INSERT INTO unidad ( placa, año_fab, altura, ancho, longitud, peso_neto, peso_util, peso_bruto, metro_cubico,cod_tarj_circu, id_tienda, estado) VALUES
+INSERT INTO unidad ( placa, ano_fab, altura, ancho, longitud, peso_neto, peso_util, peso_bruto, metro_cubico,cod_tarj_circu, id_tienda, estado) VALUES
 ('ABC123', 2018, 2.5, 2.4, 6.0, 3500, 1500, 5000, 36.0, 'TARJ-001',  1, 'S'),
 ('XYZ789', 2020, 2.6, 2.5, 7.2, 3800, 1700, 5500, 45.0, 'TARJ-002',  2, 'S'),
 ('LMN456', 2017, 2.4, 2.3, 6.5, 3400, 1600, 5000, 39.0, 'TARJ-003',  3, 'S'),
@@ -131,7 +131,7 @@ INSERT INTO persona (nombres, apellidos, num_doc, num_contacto, num_wpp, fecha_n
 ('Ana', 'Torres', 44332211, 923456789, 923456789, '1998-07-07', 'ana.torres@example.com', 'Jr. Libertad 101', 'F', 3, 'S'),
 ('Jorge', 'Vargas', 33445566, 987123456, 987123456, '1980-12-01', 'jorge.vargas@example.com', 'Pasaje El Olivo 202', 'M', 2, 'S'),
 ('María', 'Ríos', 66778899, 934567890, 934567890, '1995-09-09', 'maria.rios@example.com', 'Av. Colonial 303', 'F', 4, 'S'),
-('Luis', 'Castañeda', 55667788, 922334455, 922334455, '1991-02-18', 'luis.castaneda@example.com', 'Calle Comercio 404', 'M', 1, 'S'),
+('Luis', 'Castaneda', 55667788, 922334455, 922334455, '1991-02-18', 'luis.castaneda@example.com', 'Calle Comercio 404', 'M', 1, 'S'),
 ('Elena', 'Salas', 99887766, 933445566, 933445566, '1987-10-23', 'elena.salas@example.com', 'Jr. Amazonas 505', 'F', 3, 'S'),
 ('Andrés', 'Zamora', 77889900, 944556677, 944556677, '1993-04-12', 'andres.zamora@example.com', 'Av. Arequipa 606', 'M', 2, 'S'),
 ('Sofía', 'Quispe', 88990011, 955667788, 955667788, '1996-06-30', 'sofia.quispe@example.com', 'Jr. Cusco 707', 'F', 4, 'S');
@@ -146,7 +146,7 @@ INSERT INTO cargo (nombre_cargo, descripcion, sn_activo) VALUES
 ('Jefe de Operaciones', 'Gestiona todo el proceso operativo del transporte', 'S'),
 ('Recepcionista', 'Atiende llamadas y coordina con el equipo de transporte', 'S'),
 ('Inspector de Seguridad', 'Verifica el cumplimiento de normas de seguridad', 'S'),
-('Planificador de Rutas', 'Diseña rutas optimizadas para las entregas', 'S');
+('Planificador de Rutas', 'Disena rutas optimizadas para las entregas', 'S');
 
 
 INSERT INTO cliente_corporativo (nombre, razon_social, direccion_fiscal, empresa_id, sn_activo) VALUES

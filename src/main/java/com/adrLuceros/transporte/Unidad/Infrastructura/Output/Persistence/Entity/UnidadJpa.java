@@ -20,8 +20,8 @@ public class UnidadJpa {
     @Column(name = "placa")
     private String placa;
 
-    @Column(name = "año_fab")
-    private int añoFab;
+    @Column(name = "ano_fab")
+    private int anoFab;
 
     @Column(name = "altura")
     private double altura;
