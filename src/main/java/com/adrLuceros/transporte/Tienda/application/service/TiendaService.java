@@ -34,10 +34,12 @@ public class TiendaService {
         List<Tienda> tiendas = tiendaRepository.findAllTiendas();
         List<TiendaEmpresaDTO> tiendaEmpresaList = new ArrayList<>();
         
-        for (Tienda tienda : tiendas) {
-            TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
+for (Tienda tienda : tiendas) {
+    System.out.println("Tienda desde DB - sn_activo: " + tienda.getSn_activo()); // Debug
+    TiendaDTO tiendaDTO = mapperTiendaModeltoDTO.modelToDTO(tienda);
+    System.out.println("TiendaDTO - sn_activo: " + tiendaDTO.getSn_activo()); // Debug
             
-            if(tiendaDTO.getSn_activo() == null) continue;
+            // if(tiendaDTO.getSn_activo() == null) continue;
 
             if (tiendaDTO.getIdEmpresa() == null || tiendaDTO.getIdEmpresa() == 0) {
                 tiendaEmpresaList.add(mapperRelacionTiendaEmpresa.mapToTiendaEmpresaDTOListSinEmpresa(tiendaDTO));

@@ -32,7 +32,7 @@ public class MapperRelacionTiendaEmpresa {
         tiendaEmpresaDTO.setIdTiendaUbi(tiendaDTO.getIdTiendaUbi());
         tiendaEmpresaDTO.setDireccion(tiendaDTO.getDireccion());
         tiendaEmpresaDTO.setObservacion(tiendaDTO.getObservacion());
-        tiendaEmpresaDTO.setSn(tiendaDTO.getSn_activo());
+        tiendaEmpresaDTO.setSn_activo(tiendaDTO.getSn_activo());
         tiendaEmpresaDTO.setEmpresa(empresa);
         
         return tiendaEmpresaDTO;
@@ -49,7 +49,7 @@ public class MapperRelacionTiendaEmpresa {
         tiendaEmpresaDTO.setIdTiendaUbi(tiendaDTO.getIdTiendaUbi());
         tiendaEmpresaDTO.setDireccion(tiendaDTO.getDireccion());
         tiendaEmpresaDTO.setObservacion(tiendaDTO.getObservacion());
-        tiendaEmpresaDTO.setSn(tiendaDTO.getSn_activo());
+        tiendaEmpresaDTO.setSn_activo(tiendaDTO.getSn_activo());
         
         return tiendaEmpresaDTO;
 

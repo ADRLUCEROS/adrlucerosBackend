@@ -43,8 +43,8 @@ public class TiendaJpa {
     @Column(name = "observacion")
     private String observacion;
 
-@Column(name = "sn_activo")
-    private String snActivo;
+    @Column(name = "sn_activo")
+    private String sn_activo;
 
     @Column(name = "id_empresa")
     private Integer idEmpresa;

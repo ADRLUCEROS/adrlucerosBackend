@@ -21,7 +21,7 @@ public class TiendaEmpresaDTO {
     private int idTiendaUbi;
     private String direccion;
     private String observacion;
-    private String sn;
+    private String sn_activo;
     private EmpresaDTO empresa; 
     
 }
